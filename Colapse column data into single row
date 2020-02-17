@@ -1,4 +1,12 @@
+===============================First way===========================================
 Declare @Value Nvarchar(MAX) -- It must not be MAX if you have few numbers 
 SELECT  @Value = COALESCE(@Value + ', ', '') + ColName
 FROM   TableName where  YourCondition
 SELECT @Value
+
+==============================Second Way===========================================
+DECLARE @Value VARCHAR(max)
+select ColName + ', ' as 'data()' 
+from TableName
+where YourCondition
+FOR XML PATH('')
